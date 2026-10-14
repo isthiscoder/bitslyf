@@ -1,3 +1,2 @@
 # bitslyf-vision
-A place of Research & Development. 
-Go Ahead with - https://bitslyf.com
+A place of [Research & Development](https://bitslyf.com)
