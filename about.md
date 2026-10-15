@@ -4,10 +4,6 @@ title: About
 permalink: /about/
 ---
 
-I'm Siddharth. I write Bitslyf — a weekly research log on how industries run and what changes when one part of the workflow moves.
+Hey everyone I'm Siddharth singh a Curious guy Learning & Working in the field of Science , Research , Business & Technology. I started Bitslyf with Curiosity to Discover & Research on various Industries.The Four Logs interconnected with each other to form a Valuable Data. I do Deep Analysis on Industries (How they actually works their workflows) Published weekly. I do Deep Research on Industries (How their Impact can be changed while changing their Systems). I do Prediction (Based on Research data i do Predict what Impact an Industry can create with the given Timeline & Prediction Scorecard in Public i.e. How close it is to be True.). The workflow of Bitslyf is "Analyse(Industry) → Research(Workflow) → Prediction(Based on Research Data) → Create a Valuable Data that has Real Impacts & Implications. I do write Thesis on Industries i thought that would create a Huge Impact in future & A Futuristic vision for Industries. Deep dive into it. Thankyou.
 
-The name is *bits* and *life*: the binary layer underneath, and the human one it ends up shaping. The long-term plan is a research lab funded by this work. For now it is one person reading filings carefully and publishing what the numbers say.
-
-If you work in any part of these supply chains and I've got something wrong, I want to hear it. Corrections get published, and wrong calls stay up with everything else.
-
-**Contact** — hello@bitslyf.com
+Do Contribute on what you thought about Industries on my [email](mailto:isidd.dev@gmail.com).
