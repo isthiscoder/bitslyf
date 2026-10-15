@@ -1,0 +1,175 @@
+/* Bitslyf — white page, Garamond display, Source Serif body. Single light theme by design. */
+:root{
+  color-scheme:light;
+  --paper:#FFFFFF;
+  --ink:#16161A;
+  --muted:#6E6E78;
+  --rule:#E3E3E8;
+  --rule-soft:#EFEFF2;
+  --accent:#1A3E6F;
+  --good:#1F6B3F;
+  --bad:#9B2226;
+  --display:"EB Garamond",Garamond,Georgia,serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  background:var(--paper); color:var(--ink);
+  font-family:var(--body); font-size:1.0625rem; line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+p{margin:0}
+h1,h2,h3{margin:0; font-family:var(--display); font-weight:500; text-wrap:balance; letter-spacing:-.005em}
+:focus-visible{outline:2px solid var(--accent); outline-offset:3px}
+.visually-hidden{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
+.wrap{
+  max-width:62rem; margin:0 auto;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+}
+.col{max-width:44rem}
+.kicker{font-family:var(--body); font-size:.875rem; color:var(--muted)}
+
+/* masthead */
+.masthead{border-bottom:1px solid var(--rule)}
+.masthead .wrap{
+  padding-block:1.1rem; display:grid;
+  grid-template-columns:auto minmax(10rem,22rem) auto; align-items:center; gap:1.5rem;
+}
+.wordmark{
+  font-family:var(--display); font-weight:500; font-size:1.5rem;
+  letter-spacing:.005em; text-decoration:none; white-space:nowrap; line-height:1;
+}
+.filter{position:relative; display:flex}
+.filter input{
+  width:100%; min-width:0; font-family:var(--body); font-size:.9rem; color:var(--ink);
+  background:var(--paper); border:1px solid var(--rule); border-radius:999px;
+  padding:.52rem 1rem .52rem 2.1rem;
+}
+.filter input::placeholder{color:var(--muted)}
+.filter input::-webkit-search-cancel-button{-webkit-appearance:none; appearance:none}
+.filter svg{position:absolute; left:.9rem; top:50%; transform:translateY(-50%); color:var(--muted)}
+nav{display:flex; gap:1.35rem; justify-self:end; flex-wrap:wrap; align-items:baseline}
+nav a{
+  font-family:var(--display); font-size:1.0625rem; color:var(--muted);
+  text-decoration:none; padding-bottom:3px; border-bottom:1.5px solid transparent; white-space:nowrap;
+  transition:color .15s ease, border-color .15s ease;
+}
+nav a:hover{color:var(--ink)}
+nav a[aria-current="true"]{color:var(--ink); border-bottom-color:var(--accent)}
+
+/* standfirst */
+.standfirst{border-bottom:1px solid var(--rule)}
+.standfirst .wrap{padding-block:3.4rem 2.6rem}
+.standfirst h1{font-size:clamp(2rem,5.4vw,2.85rem); line-height:1.14; max-width:18ch}
+.lede{margin-top:1.05rem; max-width:56ch; color:var(--muted)}
+.layers{margin-top:1.1rem; max-width:58ch; display:flex; flex-direction:column; gap:.55rem}
+.layers p{color:var(--muted); font-size:1rem; line-height:1.55}
+.layers b{color:var(--ink); font-weight:600}
+.cadence{margin-top:1.15rem; max-width:58ch; font-size:1.05rem; line-height:1.55; color:var(--ink)}
+.cadence b{font-weight:600}
+
+/* subscribe */
+.sub{margin-top:2rem; max-width:29rem}
+.sub .label{display:block; font-size:.95rem; color:var(--muted)}
+.sub form{display:flex; gap:.5rem; flex-wrap:wrap; margin-top:.55rem}
+.sub input{
+  flex:1 1 12rem; min-width:0; font-family:var(--body); font-size:.95rem; color:var(--ink);
+  background:var(--paper); border:1px solid var(--rule); border-radius:999px; padding:.52rem 1rem;
+}
+.sub input::placeholder{color:var(--muted)}
+.sub button{
+  font-family:var(--display); font-size:1.05rem; background:var(--ink); color:#fff;
+  border:0; border-radius:999px; padding:.5rem 1.35rem; cursor:pointer;
+}
+.note{display:block; margin-top:.6rem; font-size:.875rem; line-height:1.55; color:var(--muted)}
+
+/* feed */
+.feed{padding-block:2.4rem 3.5rem}
+.filterhead{margin-bottom:2rem}
+.filterhead h1{font-size:clamp(1.75rem,4.6vw,2.25rem); line-height:1.18}
+.filterhead p{margin-top:.75rem; max-width:58ch; color:var(--muted)}
+.entries{display:flex; flex-direction:column}
+.entry{
+  display:grid; grid-template-columns:8rem 1fr; gap:0 1.9rem;
+  padding-block:1.2rem; border-top:1px solid var(--rule-soft); align-items:baseline;
+}
+.entry:first-child{border-top:0; padding-top:.2rem}
+.entry .meta{font-size:.95rem; color:var(--ink); line-height:1.7}
+.tag{display:inline-block; font-size:.95rem; color:var(--ink)}
+.entry h3{font-size:1.22rem; line-height:1.3}
+.entry h3 a{text-decoration:none; transition:color .15s ease}
+.entry h3 a:hover{color:var(--accent)}
+.entry p{margin-top:.35rem; color:var(--muted); font-size:.95rem; max-width:58ch}
+.entry .call{margin-top:.55rem; font-size:.95rem; color:var(--ink); line-height:1.6}
+.empty{padding-block:2rem; color:var(--muted); font-style:italic}
+
+/* status */
+.status{font-size:.9rem}
+.status.open{color:var(--accent)}
+.status.correct{color:var(--good)}
+.status.wrong{color:var(--bad)}
+
+/* predictions tally + rules */
+.rules{margin-top:2.6rem; padding-top:1.5rem; border-top:1px solid var(--rule)}
+.tally{display:flex; gap:2.2rem; flex-wrap:wrap; margin-bottom:1.8rem}
+.tally span{font-size:.95rem; color:var(--muted)}
+.tally b{display:block; font-family:var(--display); font-size:1.9rem; font-weight:500; color:var(--ink); line-height:1.1}
+.rules h2{font-family:var(--display); font-size:1.25rem; font-weight:500}
+.rules ol{margin:.9rem 0 0; padding-left:1.1rem; display:flex; flex-direction:column; gap:.6rem; color:var(--muted)}
+.rules li{padding-left:.3rem}
+.rules strong{color:var(--ink); font-weight:600}
+
+/* long pages */
+.page{padding-block:3rem 4rem}
+.page h1{margin-top:.5rem; font-size:clamp(1.85rem,5vw,2.45rem); line-height:1.17}
+.standfirst-line{margin-top:1rem; font-size:1.15rem; color:var(--muted); max-width:58ch}
+.prose{margin-top:1.6rem; display:flex; flex-direction:column; gap:1.05rem}
+.prose h2{margin-top:1.2rem; font-size:1.45rem}
+.prose h3{margin-top:.8rem; font-size:1.2rem}
+.prose ul,.prose ol{margin:0; padding-left:1.2rem; display:flex; flex-direction:column; gap:.4rem}
+.prose blockquote{
+  margin:.4rem 0; padding-left:1.1rem; border-left:2px solid var(--accent);
+  font-family:var(--display); font-size:1.2rem; font-style:italic; line-height:1.45;
+}
+.prose table{border-collapse:collapse; width:100%; font-size:.95rem}
+.prose th{text-align:left; font-weight:600; border-bottom:1px solid var(--rule); padding:.6rem .8rem .6rem 0}
+.prose td{border-bottom:1px solid var(--rule-soft); padding:.6rem .8rem .6rem 0; vertical-align:top}
+.prose img{max-width:100%; height:auto}
+.prose code{font-size:.9em; background:var(--rule-soft); padding:.1em .35em; border-radius:3px}
+.prose pre{overflow-x:auto; background:var(--rule-soft); padding:1rem; border-radius:3px}
+
+/* prediction record */
+.record{margin:1.8rem 0 0; display:grid; grid-template-columns:1fr; gap:0}
+.record > div{display:grid; grid-template-columns:11rem 1fr; gap:0 1.5rem; padding-block:.8rem; border-top:1px solid var(--rule-soft)}
+.record > div:first-child{border-top:1px solid var(--rule)}
+.record dt{margin:0; color:var(--muted); font-size:.95rem}
+.record dd{margin:0}
+.resolution{margin-top:2.2rem; padding-top:1.4rem; border-top:1px solid var(--rule)}
+.resolution h2{font-size:1.25rem}
+.resolution p{margin-top:.6rem; color:var(--muted)}
+.attached{margin-top:2.4rem; padding-top:1.4rem; border-top:1px solid var(--rule)}
+.attached h2{font-size:1.25rem; margin-bottom:.7rem}
+.attached p{margin-top:.4rem; font-size:.95rem; color:var(--muted)}
+.back{margin-top:2.4rem; font-size:.95rem; color:var(--muted)}
+
+/* footer */
+footer{border-top:1px solid var(--rule); margin-top:1.5rem}
+footer .wrap{padding-block:1.5rem 2.2rem; display:flex; align-items:center; justify-content:space-between; gap:1.2rem; flex-wrap:wrap}
+.social{display:flex; align-items:center; gap:1.35rem}
+.social a{display:inline-flex; color:var(--ink); line-height:0}
+.social a:hover{color:var(--accent)}
+.copyline{font-size:.85rem; color:var(--muted)}
+
+@media (max-width:860px){
+  .masthead .wrap{grid-template-columns:1fr; gap:.9rem}
+  nav{justify-self:start; gap:1rem}
+  .filter{order:3}
+}
+@media (max-width:620px){
+  .entry{grid-template-columns:1fr; gap:.45rem}
+  .entry .meta{line-height:1.6}
+  .record > div{grid-template-columns:1fr; gap:.15rem}
+}
