@@ -15,7 +15,7 @@ layout: default
   </dl>
 
   {% if page.essay %}
-    {% assign parent = site.documents | where_exp: "d", "d.collection == 'essays'" | where: "slug", page.essay | first %}
+    {% assign parent = site.documents | where: "slug", page.essay | first %}
     {% if parent %}<p class="back">Argued in <a href="{{ parent.url | relative_url }}">{{ parent.title }}</a>.</p>{% endif %}
   {% endif %}
 

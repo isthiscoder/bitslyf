@@ -10,7 +10,7 @@ layout: default
     {{ content }}
   </div>
 
-  {% assign calls = site.documents | where_exp: "d", "d.collection == 'predictions'" | where: "essay", page.slug %}
+  {% assign calls = site.documents | where: "layer", "prediction" | where: "essay", page.slug %}
   {% if calls.size > 0 %}
   <div class="attached">
     <h2>Predictions made in this essay</h2>
