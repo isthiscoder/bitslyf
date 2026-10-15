@@ -1,0 +1,75 @@
+---
+layout: default
+---
+<div class="standfirst" id="standfirst">
+  <div class="wrap col">
+    <h1>Research Log on Industries, Workflows &amp; Predictions</h1>
+    <p class="lede">Four kinds of writing, in increasing order of risk.</p>
+
+    <div class="layers">
+      <p><b>Analysis</b> — how an industry actually works: the workflow underneath the headlines, and the impact that workflow creates. Published weekly.</p>
+      <p><b>Research</b> — how an industry could change that impact by changing the workflow. One variable moved, assumptions on the table.</p>
+      <p><b>Predictions</b> — what a given change should produce, and by when. Dated, scored, never deleted.</p>
+      <p><b>Thesis</b> — industries and workflows I've designed myself, where I've measured the impact and believe it would be large.</p>
+    </div>
+
+    <p class="cadence">Analysis runs every week. Research, Predictions and Thesis appear only when I have real conviction — <b>one essay a week, no exceptions.</b></p>
+
+    <div class="sub">
+      <span class="label">Get each piece by email</span>
+      <form id="subscribe" novalidate>
+        <label for="email" class="visually-hidden">Email address</label>
+        <input id="email" name="email" type="email" placeholder="you@username.com" autocomplete="email">
+        <button type="submit">Subscribe</button>
+      </form>
+      <span class="note" id="subnote">Free. Archive stays open. Every prediction is scored in public.</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap col feed">
+  <div class="filterhead" id="filterhead" hidden>
+    <h1></h1>
+    <p></p>
+  </div>
+
+  <div class="entries" id="entries">
+    {% assign items = site.essays | concat: site.predictions | sort: "date" | reverse %}
+    {% for item in items %}
+      {% assign kind = item.layer %}
+      <article class="entry" data-kind="{{ kind }}" data-text="{{ item.title | default: item.claim | append: ' ' | append: kind | append: ' ' | append: item.date | date: '%d %b %Y' | downcase }}">
+        <div class="meta">{{ item.date | date: "%d %b %Y" }}<br><span class="tag">{% if kind == 'prediction' %}Prediction{% else %}{{ kind | capitalize }}{% endif %}</span></div>
+        <div>
+          <h3><a href="{{ item.url | relative_url }}">{{ item.title | default: item.claim }}</a></h3>
+          {% if item.summary %}<p>{{ item.summary }}</p>{% endif %}
+          {% if kind == 'prediction' %}
+          <div class="call">{{ item.confidence }}% · resolves {{ item.resolves | date: "%d %b %Y" }} <span class="status {{ item.result }}">{{ item.result | capitalize }}</span></div>
+          {% endif %}
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+
+  <p class="empty" id="empty" hidden>Nothing matches that search.</p>
+
+  <div class="rules" id="rules" hidden>
+    {% assign preds = site.predictions %}
+    {% assign resolved = preds | where_exp: "p", "p.result != 'open'" %}
+    {% assign correct = preds | where: "result", "correct" %}
+    <div class="tally">
+      <span><b>{{ preds.size }}</b> made</span>
+      <span><b>{{ resolved.size }}</b> resolved</span>
+      <span><b>{% if resolved.size > 0 %}{{ correct.size | times: 100 | divided_by: resolved.size }}%{% else %}—{% endif %}</b> correct</span>
+    </div>
+
+    <h2>Rules, fixed before the first call</h2>
+    <ol>
+      <li><strong>Every prediction states four things:</strong> the claim, a resolution date, a confidence as a number, and what would prove it wrong.</li>
+      <li><strong>Confidence is a percentage, never a word.</strong> "Likely" cannot be scored.</li>
+      <li><strong>Resolution runs against a named public source,</strong> chosen when the call is made, not when it resolves.</li>
+      <li><strong>Nothing is deleted or quietly reworded.</strong> Resolutions are appended, never written over the claim.</li>
+      <li><strong>A call that cannot be wrong is not published.</strong></li>
+      <li><strong>Roughly one essay in four carries a call.</strong> No call is better than a forced one.</li>
+    </ol>
+  </div>
+</div>
