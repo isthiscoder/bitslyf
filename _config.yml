@@ -1,7 +1,7 @@
 title: Bitslyf
 description: Research log on industries, workflows and predictions.
-author: Siddharth
-email: hello@bitslyf.com
+author: Siddharth singh
+email: mailto:isidd.dev@gmail.com
 url: "https://bitslyf.com"
 
 collections:
@@ -19,9 +19,9 @@ defaults:
     values: { layout: "prediction", layer: "prediction" }
 
 social:
-  twitter: "#"
-  linkedin: "#"
-  instagram: "#"
+  twitter: "https://x.com/bitslyf"
+  linkedin: "https://www.linkedin.com/company/bitslyf"
+  instagram: "https://www.instagram.com/bitslyf"
 
 exclude: [README.md, Gemfile, Gemfile.lock, vendor]
 plugins: []
