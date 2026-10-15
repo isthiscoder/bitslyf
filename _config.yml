@@ -20,7 +20,7 @@ defaults:
 
 social:
   twitter: "https://x.com/bitslyf"
-  linkedin: "https://www.linkedin.com/company/112171925"
+  linkedin: "https://www.linkedin.com/company/bitslyf"
   instagram: "https://www.instagram.com/bitslyf"
 
 exclude: [README.md, Gemfile, Gemfile.lock, vendor]
