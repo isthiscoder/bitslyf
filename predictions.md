@@ -3,5 +3,5 @@ layout: archive
 title: Predictions
 permalink: /predictions/
 layer: prediction
-blurb: "Every call made here, with its confidence, its resolution date and how it turned out. Resolutions are appended, never written over the claim."
+blurb: "A Prediction (I put the Research into Predictions that how its going to Impact the Industries with Date & Prediction score). Go Ahead with Prediction score i.e. How close it is to be True."
 ---
