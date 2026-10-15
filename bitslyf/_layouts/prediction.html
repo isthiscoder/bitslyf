@@ -1,0 +1,32 @@
+---
+layout: default
+---
+<article class="wrap col page">
+  <p class="kicker">Prediction · made {{ page.date | date: "%d %b %Y" }}</p>
+  <h1>{{ page.claim }}</h1>
+
+  <dl class="record">
+    <div><dt>Confidence</dt><dd>{{ page.confidence }}%</dd></div>
+    <div><dt>Made</dt><dd>{{ page.date | date: "%d %b %Y" }}</dd></div>
+    <div><dt>Resolves</dt><dd>{{ page.resolves | date: "%d %b %Y" }}</dd></div>
+    <div><dt>Status</dt><dd><span class="status {{ page.result }}">{{ page.result | capitalize }}</span></dd></div>
+    <div><dt>Proved wrong by</dt><dd>{{ page.falsified_by }}</dd></div>
+    <div><dt>Resolution source</dt><dd>{{ page.source }}</dd></div>
+  </dl>
+
+  {% if page.essay %}
+    {% assign parent = site.documents | where: "slug", page.essay | first %}
+    {% if parent %}<p class="back">Argued in <a href="{{ parent.url | relative_url }}">{{ parent.title }}</a>.</p>{% endif %}
+  {% endif %}
+
+  {% if content != "" %}<div class="prose">{{ content }}</div>{% endif %}
+
+  {% if page.resolution %}
+  <div class="resolution">
+    <h2>Resolved {{ page.resolved_on | date: "%d %b %Y" }}</h2>
+    <p>{{ page.resolution }}</p>
+  </div>
+  {% endif %}
+
+  <p class="back"><a href="{{ '/#prediction' | relative_url }}">← All predictions</a></p>
+</article>
