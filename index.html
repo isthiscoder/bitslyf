@@ -1,0 +1,36 @@
+---
+layout: default
+---
+<div class="standfirst" id="standfirst">
+  <div class="wrap col">
+    <h1>Research Log on Industries, Workflows &amp; Predictions</h1>
+    <p class="lede">Four kinds of writing, in increasing order of risk.</p>
+
+    <div class="layers">
+      <p><b>Analysis</b> — how an industry actually works: the workflow underneath the headlines, and the impact that workflow creates. Published weekly.</p>
+      <p><b>Research</b> — how an industry could change that impact by changing the workflow. One variable moved, assumptions on the table.</p>
+      <p><b>Predictions</b> — what a given change should produce, and by when. Dated, scored, never deleted.</p>
+      <p><b>Thesis</b> — industries and workflows I've designed myself, where I've measured the impact and believe it would be large.</p>
+    </div>
+
+    <p class="cadence">Analysis runs every week. Research, Predictions and Thesis appear only when I have real conviction — <b>one essay a week, no exceptions.</b></p>
+
+    <div class="sub">
+      <span class="label">Get each piece by email</span>
+      <form id="subscribe" novalidate>
+        <label for="email" class="visually-hidden">Email address</label>
+        <input id="email" name="email" type="email" placeholder="you@username.com" autocomplete="email">
+        <button type="submit">Subscribe</button>
+      </form>
+      <span class="note" id="subnote">Free. Archive stays open. Every prediction is scored in public.</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap col feed">
+  {% assign items = site.documents | sort: "date" | reverse %}
+  <div class="entries" id="entries">
+    {% include entries.html items=items %}
+  </div>
+  <p class="empty" id="empty" hidden>Nothing matches that search.</p>
+</div>
