@@ -23,6 +23,7 @@ a{color:inherit}
 p{margin:0}
 h1,h2,h3{margin:0; font-family:var(--display); font-weight:500; text-wrap:balance; letter-spacing:-.005em}
 :focus-visible{outline:2px solid var(--accent); outline-offset:3px}
+[hidden]{display:none !important}
 .visually-hidden{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
 .wrap{
   max-width:62rem; margin:0 auto;
