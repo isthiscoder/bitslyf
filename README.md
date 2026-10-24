@@ -1,2 +1,0 @@
-# Bitslyf
-Research & Development.
