@@ -1,0 +1,10 @@
+{% assign preds = site.predictions %}
+{% assign openpreds = preds | where: "result", "open" %}
+{% assign correct = preds | where: "result", "correct" %}
+{% assign resolvedcount = preds.size | minus: openpreds.size %}
+<div class="tally">
+  <span><b>{{ preds.size }}</b> made</span>
+  <span><b>{{ openpreds.size }}</b> open</span>
+  <span><b>{{ resolvedcount }}</b> resolved</span>
+  <span><b>{% if resolvedcount > 0 %}{{ correct.size | times: 100 | divided_by: resolvedcount }}%{% else %}–{% endif %}</b> correct</span>
+</div>

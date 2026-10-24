@@ -1,0 +1,42 @@
+{%- comment -%}
+  The five logs, grouped under Discover / Predict / Build.
+  Counts are worked out from the posts on every build, so a new post updates them automatically.
+{%- endcomment -%}
+{% assign groups = "Discover.|analysis,research;Predict.|prediction,thesis;Build.|rfs" | split: ";" %}
+<section class="logs" aria-labelledby="logs-h">
+  <div class="logs-inner">
+    <h2 id="logs-h">The five logs</h2>
+    <div class="cols">
+      {% for g in groups %}
+        {% assign gp = g | split: "|" %}
+        {% assign layers = gp[1] | split: "," %}
+        <div class="col">
+          <h3>{{ gp[0] }}</h3>
+          {% for l in layers %}
+            {% assign items = site.documents | where: "layer", l %}
+            {% case l %}
+              {% when 'analysis' %}{% assign desc = "How an industry's workflow actually runs today." %}{% assign url = '/analysis/' %}
+              {% when 'research' %}{% assign desc = "What changing a workflow or strategy would change." %}{% assign url = '/research/' %}
+              {% when 'prediction' %}{% assign desc = "Dated calls with a probability, scored in public." %}{% assign url = '/prediction/' %}
+              {% when 'thesis' %}{% assign desc = "Where whole industries are heading." %}{% assign url = '/thesis/' %}
+              {% when 'rfs' %}{% assign desc = "Requests for startups: what someone should build next." %}{% assign url = '/rfs/' %}
+            {% endcase %}
+            {% capture name %}{% include layer-name.html layer=l %}{% endcapture %}
+            <a class="log{% if items.size == 0 %} empty{% endif %}" href="{{ url | relative_url }}">
+              <div class="log-top">
+                <span class="log-name">{{ name }}</span>
+                <span class="log-count">
+                  {%- if items.size == 0 -%}Coming soon
+                  {%- elsif l == 'prediction' -%}{% assign openp = items | where: "result", "open" %}{{ items.size }} {% if items.size == 1 %}call{% else %}calls{% endif %} · {{ openp.size }} open
+                  {%- else -%}{{ items.size }} {% if items.size == 1 %}entry{% else %}entries{% endif %}{%- endif -%}
+                </span>
+              </div>
+              <p>{{ desc }}</p>
+              <span class="go">Open {{ name }} →</span>
+            </a>
+          {% endfor %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

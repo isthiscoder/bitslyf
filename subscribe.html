@@ -1,0 +1,27 @@
+{%- comment -%}
+  Subscribe box plus the one-line scorecard. The scorecard is worked out from the predictions on every build.
+  The form posts to Buttondown (newsletter "bitslyf").
+{%- endcomment -%}
+{% assign preds = site.documents | where: "layer", "prediction" %}
+{% assign openp = preds | where: "result", "open" %}
+{% assign corr = preds | where: "result", "correct" %}
+{% assign res = preds.size | minus: openp.size %}
+<section class="subscribe" aria-labelledby="sub-h">
+  <div class="sub-inner">
+    <h2 id="sub-h">One analysis every week.</h2>
+    <p class="sub-lede">How an industry actually works, delivered to your inbox. Free.</p>
+    <form class="sub-form" action="https://buttondown.com/api/emails/embed-subscribe/bitslyf" method="post" target="_blank">
+      <label for="sub-email" class="visually-hidden">Email address</label>
+      <input id="sub-email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+      <button type="submit">Subscribe</button>
+    </form>
+    <p class="sub-msg" role="status"></p>
+    <p class="scoreline">
+      <span><b>{{ preds.size }}</b>predictions</span>
+      <span><b>{{ openp.size }}</b>open</span>
+      <span><b>{{ res }}</b>resolved</span>
+      <span><b>{% if res > 0 %}{{ corr.size | times: 100 | divided_by: res }}%{% else %}–{% endif %}</b>correct</span>
+      <a href="{{ '/scorecard/' | relative_url }}">See the scorecard →</a>
+    </p>
+  </div>
+</section>

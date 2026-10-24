@@ -1,0 +1,25 @@
+{%- comment -%}
+  The latest work: the newest entry across all five logs (Analysis, Research, Prediction, Thesis, RFS).
+  Push a new post and it appears here on the next build. On the same date, writing comes before a prediction.
+{%- endcomment -%}
+{% assign all = site.documents | sort: "date" | reverse %}
+{% assign newest = all | first %}
+{% assign writing_same_day = all | where_exp: "d", "d.layer != 'prediction'" | where_exp: "d", "d.date == newest.date" | first %}
+{% if writing_same_day %}{% assign newest = writing_same_day %}{% endif %}
+{% if newest %}
+{% capture logurl %}{% include log-url.html layer=newest.layer %}{% endcapture %}
+<section class="latest" aria-labelledby="latest-h">
+  <div class="latest-inner">
+    <h2 id="latest-h">The latest work</h2>
+    <article class="work">
+      <div class="work-meta">
+        <a class="pill" href="{{ logurl | relative_url }}">{% include layer-name.html layer=newest.layer %}</a>
+        <span>{{ newest.date | date: "%-d %b %Y" }}</span>
+      </div>
+      <h3><a href="{{ newest.url | relative_url }}">{{ newest.title | default: newest.claim }}</a></h3>
+      {% if newest.summary %}<p>{{ newest.summary }}</p>{% endif %}
+      <a class="more" href="{{ newest.url | relative_url }}">Read more →</a>
+    </article>
+  </div>
+</section>
+{% endif %}

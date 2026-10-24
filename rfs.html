@@ -1,0 +1,47 @@
+---
+layout: default
+---
+{%- comment -%} One request for startups: bitslyf.com/rfs/<slug>/ {%- endcomment -%}
+{%- assign all = site.rfs | sort: "date" -%}
+{%- assign num = 0 -%}
+{%- for r in all -%}{%- if r.url == page.url -%}{%- assign num = forloop.index -%}{%- endif -%}{%- endfor -%}
+
+<div class="page-wrap">
+  <article class="page-inner wide article rfs-page">
+    <p class="crumbs"><a href="{{ '/rfs/' | relative_url }}">RFS</a> / {{ page.title }}</p>
+    <div class="article-meta">
+      <span class="rfs-num big">RFS {% if num < 10 %}0{% endif %}{{ num }}</span>
+      <span class="pill{% if page.status == 'building' %} filled{% endif %}">{% if page.status == 'building' %}Being built{% else %}Open{% endif %}</span>
+      <span>{{ page.date | date: "%-d %b %Y" }}</span>
+    </div>
+    <h1>{{ page.title }}</h1>
+    {% if page.summary %}<p class="standfirst">{{ page.summary }}</p>{% endif %}
+
+    <div class="brief">
+      {% if page.problem %}<section><h2>The problem</h2><div class="brief-text">{{ page.problem | markdownify }}</div></section>{% endif %}
+      {% if page.why_now %}<section><h2>Why now</h2><div class="brief-text">{{ page.why_now | markdownify }}</div></section>{% endif %}
+      {% if page.first_version %}<section><h2>What to build first</h2><div class="brief-text">{{ page.first_version | markdownify }}</div></section>{% endif %}
+      {% if page.who %}<section><h2>Who should build it</h2><div class="brief-text">{{ page.who | markdownify }}</div></section>{% endif %}
+      {% if page.evidence %}
+      <section><h2>The research behind it</h2><div class="brief-text"><ul class="evidence">
+        {% for slug in page.evidence %}{% assign ev = site.documents | where: "slug", slug | first %}{% if ev %}
+        {%- capture evname %}{% include layer-name.html layer=ev.layer %}{% endcapture -%}
+        <li><span class="pill">{{ evname }}</span> <a href="{{ ev.url | relative_url }}">{{ ev.title | default: ev.claim }}</a></li>
+        {% endif %}{% endfor %}
+      </ul></div></section>
+      {% endif %}
+      {% if page.questions %}<section><h2>Open questions</h2><div class="brief-text"><ul>{% for q in page.questions %}<li>{{ q }}</li>{% endfor %}</ul></div></section>{% endif %}
+    </div>
+
+    {% assign body = content | strip %}
+    {% if body != "" %}<div class="prose">{{ content }}</div>{% endif %}
+
+    <aside class="build-box">
+      <h2>Building this?</h2>
+      <p>Write to us with what you're trying and where you're stuck. We read every message.</p>
+      <p class="build-mail"><a href="mailto:{{ site.email }}?subject={{ 'Building: ' | append: page.title | uri_escape }}">{{ site.email }}</a></p>
+    </aside>
+
+    <p class="back"><a href="{{ '/rfs/' | relative_url }}">← All requests</a></p>
+  </article>
+</div>

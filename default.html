@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{% if page.url == "/" %}{{ site.title }} · {{ site.motto }}{% else %}{{ page.title | default: page.claim }} · {{ site.title }}{% endif %}</title>
+<meta name="description" content="{{ page.summary | default: page.intro | default: site.description | strip_html | escape }}">
+<link rel="canonical" href="{{ page.url | absolute_url }}">
+<meta property="og:title" content="{{ page.title | default: page.claim | default: site.title | escape }}">
+<meta property="og:description" content="{{ page.summary | default: site.description | escape }}">
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+<meta property="og:type" content="{% if page.collection %}article{% else %}website{% endif %}">
+<meta property="og:site_name" content="{{ site.title }}">
+<meta property="og:image" content="{{ page.image | default: '/assets/images/og-default.png' | absolute_url }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{{ page.image | default: '/assets/images/og-default.png' | absolute_url }}">
+<link rel="icon" href="{{ '/favicon.ico' | relative_url }}" sizes="any">
+<link rel="icon" href="{{ '/favicon.svg' | relative_url }}" type="image/svg+xml">
+<link rel="icon" href="{{ '/favicon-32.png' | relative_url }}" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="{{ '/apple-touch-icon.png' | relative_url }}">
+<script>
+  /* Apply the saved light/dark choice before the page paints. */
+  (function(){try{var t=localStorage.getItem("bitslyf-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}catch(e){}})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&family=EB+Garamond:wght@400;500&display=swap">
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="{{ '/' | relative_url }}" aria-label="Bitslyf home">
+      <svg viewBox="0 0 200 100" aria-hidden="true">
+        <path d="M34,50 L166,50" stroke="currentColor" stroke-width="10"/>
+        <circle cx="34" cy="50" r="17" fill="currentColor"/>
+        <circle cx="100" cy="50" r="17" fill="currentColor"/>
+        <circle cx="166" cy="50" r="14" fill="var(--bg)" stroke="currentColor" stroke-width="8"/>
+      </svg>
+      Bitslyf
+    </a>
+
+    <form class="search" role="search" action="#" data-index="{{ '/search.json' | relative_url }}">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg>
+      <label for="q" class="visually-hidden">Search Bitslyf</label>
+      <input id="q" type="search" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="results" aria-autocomplete="list">
+      <div class="results" id="results" role="listbox" aria-label="Search results" hidden></div>
+    </form>
+
+    <nav aria-label="Main">
+      <a href="{{ '/analysis/' | relative_url }}"{% if page.layer == 'analysis' %} aria-current="page"{% endif %}>Analysis</a>
+      <a href="{{ '/research/' | relative_url }}"{% if page.layer == 'research' %} aria-current="page"{% endif %}>Research</a>
+      <a href="{{ '/prediction/' | relative_url }}"{% if page.layer == 'prediction' %} aria-current="page"{% endif %}>Prediction</a>
+      <a href="{{ '/thesis/' | relative_url }}"{% if page.layer == 'thesis' %} aria-current="page"{% endif %}>Thesis</a>
+      <a href="{{ '/rfs/' | relative_url }}"{% if page.layer == 'rfs' %} aria-current="page"{% endif %}>RFS</a>
+      <a href="{{ '/about/' | relative_url }}"{% if page.url == '/about/' %} aria-current="page"{% endif %}>About</a>
+    </nav>
+    <button class="theme" id="theme" type="button" role="switch" aria-checked="false" aria-label="Dark mode" title="Light / dark">
+      <span class="track" aria-hidden="true"><span class="knob"></span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+{{ content }}
+</main>
+
+<footer class="site-footer">
+  <div class="foot">
+    <nav class="social" aria-label="Bitslyf elsewhere">
+      <a href="{{ site.social.linkedin }}" aria-label="LinkedIn"><svg viewBox="1.6 1 21.4 22" style="height:20px" fill="currentColor" aria-hidden="true"><path d="M1.6 8.2h4.6V23H1.6zM3.9 1a2.67 2.67 0 1 1 0 5.34A2.67 2.67 0 0 1 3.9 1zM9.1 8.2h4.4v2h.06c.62-1.17 2.12-2.4 4.37-2.4 4.67 0 5.53 3.07 5.53 7.07V23h-4.6v-7.1c0-1.7-.03-3.88-2.36-3.88-2.37 0-2.73 1.85-2.73 3.76V23H9.1z"/></svg></a>
+      <a href="{{ site.social.twitter }}" aria-label="Twitter"><svg viewBox="0 2.6 24 19.3" style="height:19px" fill="currentColor" aria-hidden="true"><path d="M23.95 4.57a10 10 0 0 1-2.83.78 4.93 4.93 0 0 0 2.17-2.72c-.95.56-2 .97-3.13 1.19a4.92 4.92 0 0 0-8.39 4.49A13.97 13.97 0 0 1 1.64 3.16a4.92 4.92 0 0 0 1.52 6.57 4.9 4.9 0 0 1-2.23-.61v.06a4.92 4.92 0 0 0 3.95 4.83 4.96 4.96 0 0 1-2.21.08 4.93 4.93 0 0 0 4.6 3.42A9.87 9.87 0 0 1 0 19.54a13.94 13.94 0 0 0 7.55 2.21c9.06 0 14-7.5 14-14 0-.21 0-.42-.02-.63a9.94 9.94 0 0 0 2.42-2.55z"/></svg></a>
+      <a href="{{ site.social.instagram }}" aria-label="Instagram"><svg viewBox="1.4 1.4 21.2 21.2" style="height:21px" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="2.7" y="2.7" width="18.6" height="18.6" rx="5.4"/><circle cx="12" cy="12" r="4.3"/><circle cx="17.7" cy="6.3" r="1.25" fill="currentColor" stroke="none"/></svg></a>
+      <a href="mailto:{{ site.email }}" aria-label="Email"><svg viewBox="2 4 20 16" style="height:16px" fill="currentColor" aria-hidden="true"><path d="M2 6.2A2.2 2.2 0 0 1 4.2 4h15.6A2.2 2.2 0 0 1 22 6.2v.5l-10 6.6L2 6.7z"/><path d="M2 9.1l9.45 6.25a1 1 0 0 0 1.1 0L22 9.1v8.7A2.2 2.2 0 0 1 19.8 20H4.2A2.2 2.2 0 0 1 2 17.8z"/></svg></a>
+    </nav>
+    <p class="rights">© {{ site.time | date: "%Y" }} {{ site.title }}. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="{{ '/assets/js/site.js' | relative_url }}"></script>
+</body>
+</html>

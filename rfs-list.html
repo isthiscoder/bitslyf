@@ -1,0 +1,52 @@
+---
+layout: default
+---
+{%- comment -%}
+  Requests for Startups: numbered cards, newest first, 12 per page.
+  Page 2, 3 … are made automatically by _plugins/section_pager.rb.
+  The number (RFS 01, 02 …) follows publishing order, so it never changes.
+{%- endcomment -%}
+{%- assign items = site.rfs | sort: "date" | reverse -%}
+{%- assign per = page.per_page | default: 12 -%}
+{%- assign now = page.page_num | default: 1 -%}
+{%- assign offset = now | minus: 1 | times: per -%}
+{%- assign total = items.size -%}
+{%- assign open_count = items | where_exp: "d", "d.status != 'building'" | size -%}
+
+<div class="page-wrap">
+  <div class="page-inner wide">
+    <header class="rfs-head">
+      <p class="rfs-eyebrow">Build.</p>
+      <h1>Requests for Startups</h1>
+      <p class="section-intro">Problems our research says are worth solving. Each request comes from a bottleneck we documented, and says what someone should build first.</p>
+      {% if total > 0 %}<p class="section-count">{{ total }} {% if total == 1 %}request{% else %}requests{% endif %} · {{ open_count }} open{% if page.total_pages > 1 %} · page {{ now }} of {{ page.total_pages }}{% endif %}</p>{% endif %}
+    </header>
+
+    {% if total == 0 %}
+      <div class="rfs-empty">
+        <p class="rfs-empty-title">The first request is on its way.</p>
+        <p>A request is published once a bottleneck has been analysed, researched and called. Until then, the work lives in <a href="{{ '/analysis/' | relative_url }}">Analysis</a> and <a href="{{ '/research/' | relative_url }}">Research</a>.</p>
+      </div>
+    {% else %}
+      <div class="rfs-grid">
+      {%- for r in items limit: per offset: offset %}
+        {%- assign num = total | minus: offset | minus: forloop.index0 -%}
+        <a class="rfs-card" href="{{ r.url | relative_url }}">
+          <div class="rfs-card-top">
+            <span class="rfs-num">RFS {% if num < 10 %}0{% endif %}{{ num }}</span>
+            <span class="pill{% if r.status == 'building' %} filled{% endif %}">{% if r.status == 'building' %}Being built{% else %}Open{% endif %}</span>
+          </div>
+          <h2>{{ r.title }}</h2>
+          {% if r.summary %}<p>{{ r.summary }}</p>{% endif %}
+          <div class="rfs-card-foot">
+            <span class="rfs-date">{{ r.date | date: "%-d %b %Y" }}</span>
+            <span class="go">Read the request →</span>
+          </div>
+        </a>
+      {%- endfor %}
+      </div>
+    {% endif %}
+
+    {% include pager.html %}
+  </div>
+</div>

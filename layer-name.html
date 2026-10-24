@@ -1,0 +1,1 @@
+{%- case include.layer -%}{%- when 'rfs' -%}RFS{%- when 'prediction' -%}Prediction{%- else -%}{{ include.layer | capitalize }}{%- endcase -%}

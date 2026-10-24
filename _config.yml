@@ -1,0 +1,51 @@
+# ─────────────────────────────────────────────
+#  Bitslyf: site settings
+# ─────────────────────────────────────────────
+title: Bitslyf
+motto: "Discover. Predict. Build."
+description: "A research lab on industries, from how they work to what to build next."
+author: Siddharth Singh
+email: "isidd.dev@gmail.com"
+url: "https://bitslyf.com"
+baseurl: ""
+
+social:
+  linkedin:  "https://www.linkedin.com/company/bitslyf"
+  twitter:   "https://x.com/bitslyf"
+  instagram: "https://www.instagram.com/bitslyf"
+
+# ─────────────────────────────────────────────
+#  The five logs. Each has its own folder:
+#    _analysis/   →  bitslyf.com/analysis/<slug>/
+#    _research/   →  bitslyf.com/research/<slug>/
+#    _predictions/→  bitslyf.com/prediction/<slug>/
+#    _thesis/     →  bitslyf.com/thesis/<slug>/
+#    _rfs/        →  bitslyf.com/rfs/<slug>/
+#  File name: YYYY-MM-DD-your-title.md  (the part after the date becomes the URL)
+# ─────────────────────────────────────────────
+collections:
+  analysis:    { output: true, permalink: /analysis/:slug/ }
+  research:    { output: true, permalink: /research/:slug/ }
+  predictions: { output: true, permalink: /prediction/:slug/ }
+  thesis:      { output: true, permalink: /thesis/:slug/ }
+  rfs:         { output: true, permalink: /rfs/:slug/ }
+
+defaults:
+  - scope: { path: "", type: "analysis" }
+    values: { layout: article, layer: analysis }
+  - scope: { path: "", type: "research" }
+    values: { layout: article, layer: research }
+  - scope: { path: "", type: "thesis" }
+    values: { layout: article, layer: thesis }
+  - scope: { path: "", type: "rfs" }
+    values: { layout: rfs, layer: rfs, status: open }
+  - scope: { path: "", type: "predictions" }
+    values: { layout: prediction, layer: prediction }
+
+# ─────────────────────────────────────────────
+#  Build settings: leave these alone
+# ─────────────────────────────────────────────
+markdown: kramdown
+kramdown:
+  input: GFM
+exclude: [README.md, Gemfile, Gemfile.lock, vendor, .github]

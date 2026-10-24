@@ -1,0 +1,23 @@
+{%- comment -%} ← Newer · 1 2 3 · Older →  Uses page.page_num, page.total_pages, page.base_url (set by _plugins/section_pager.rb). {%- endcomment -%}
+{%- assign pg_total = page.total_pages | default: 1 -%}
+{%- assign pg_now = page.page_num | default: 1 -%}
+{%- assign pg_base = page.base_url | default: page.url -%}
+{%- if pg_total > 1 %}
+<nav class="pager" aria-label="Pages">
+  {%- if pg_now > 1 %}
+    {%- assign pg_prev = pg_now | minus: 1 %}
+    <a class="newer" href="{% if pg_prev == 1 %}{{ pg_base | relative_url }}{% else %}{{ pg_base | append: 'page' | append: pg_prev | append: '/' | relative_url }}{% endif %}">&larr; Newer</a>
+  {%- else %}<span class="newer"></span>{% endif %}
+  <span class="pages">
+    {%- for i in (1..pg_total) %}
+      {%- if i == pg_now %}<span aria-current="page">{{ i }}</span>
+      {%- elsif i == 1 %}<a href="{{ pg_base | relative_url }}">1</a>
+      {%- else %}<a href="{{ pg_base | append: 'page' | append: i | append: '/' | relative_url }}">{{ i }}</a>{% endif %}
+    {%- endfor %}
+  </span>
+  {%- if pg_now < pg_total %}
+    {%- assign pg_next = pg_now | plus: 1 %}
+    <a class="older" href="{{ pg_base | append: 'page' | append: pg_next | append: '/' | relative_url }}">Older &rarr;</a>
+  {%- else %}<span class="older"></span>{% endif %}
+</nav>
+{%- endif %}

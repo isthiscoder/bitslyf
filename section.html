@@ -1,0 +1,41 @@
+---
+layout: default
+---
+{%- comment -%}
+  One log (page.collection = analysis | research | predictions | thesis | rfs), newest first,
+  12 per page. Page 2, 3 … are made automatically by _plugins/section_pager.rb.
+{%- endcomment -%}
+{%- assign items = site[page.collection] | sort: "date" | reverse -%}
+{%- assign per = page.per_page | default: 12 -%}
+{%- assign now = page.page_num | default: 1 -%}
+{%- assign offset = now | minus: 1 | times: per -%}
+{%- assign total = items.size -%}
+{%- if page.layer == 'prediction' -%}{%- assign noun = 'calls' -%}{%- if total == 1 %}{% assign noun = 'call' %}{% endif -%}
+{%- else -%}{%- assign noun = 'entries' -%}{%- if total == 1 %}{% assign noun = 'entry' %}{% endif -%}{%- endif -%}
+
+<div class="page-wrap">
+  <div class="page-inner">
+    <header class="section-head">
+      <h1>{{ page.title }}</h1>
+      {% if page.intro %}<p class="section-intro">{{ page.intro }}</p>{% endif %}
+      {% if total > 0 %}<p class="section-count">{{ total }} {{ noun }}{% if page.total_pages > 1 %} · page {{ now }} of {{ page.total_pages }}{% endif %}</p>{% endif %}
+    </header>
+
+    {% if total == 0 %}
+      <p class="empty-note">Nothing here yet. The first {{ page.title }} entry is on its way.</p>
+    {% else %}
+      <div class="entry-list">
+      {%- for post in items limit: per offset: offset %}
+        <a class="entry" href="{{ post.url | relative_url }}">
+          <span class="entry-date">{{ post.date | date: "%-d %b %Y" }}</span>
+          <h2>{{ post.title | default: post.claim }}</h2>
+          {% if post.summary %}<p>{{ post.summary }}</p>{% endif %}
+          {% if page.layer == 'prediction' %}<span class="call-line">{{ post.confidence }}% · resolves {{ post.resolves | date: "%-d %b %Y" }} · <span class="status">{{ post.result | capitalize }}</span></span>{% endif %}
+        </a>
+      {%- endfor %}
+      </div>
+    {% endif %}
+
+    {% include pager.html %}
+  </div>
+</div>
