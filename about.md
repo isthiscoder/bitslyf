@@ -1,4 +1,10 @@
-# About 
-The name itself speaks what it does Bits (The small fundamental concepts on How Industries actually works) & Lyf (The evolution of industries & creation of new possibilities) so from Analysing the workflow of industries to the Evolution or Creation of Industries it's where the Bitslyf bridges between. It does [Analysis](https://bitslyf.com/analysis/) to [Research](https://bitslyf.com/research/) [Prediction](https://bitslyf.com/prediction/) to [Thesis](https://bitslyf.com/thesis/) Putting all data together to form valuable insights & helping builders to build an Industries on top of that i.e. [Requests for Startups RSA](https://bitslyf.com/rfs/). Every Bit is interconnected to each other. It does have [Scorecard](https://bitslyf.com/scorecard/) a score based on prediction. The motto is  Discover. Predict. Build. Go Ahead with Bitslyf deep dive into it. 
+---
+layout: page
+title: About
+permalink: /about/
+summary: "Bitslyf is a research lab on industries: how they work, where they're stuck, and what to build next."
+---
 
-To Contribute or to be a part of Bitslyf here you go [email](mailto:isidd.dev). We work to Build it. Thankyou.
+The name itself speaks what it does Bits (The small fundamental concepts on How Industries actually works) & Lyf (The evolution of industries & creation of new possibilities) so from Analysing the workflow of industries to the Evolution or Creation of Industries it's where the Bitslyf bridges between. It does [Analysis](https://bitslyf.com/analysis/) to [Research](https://bitslyf.com/research/) [Prediction](https://bitslyf.com/prediction/) to [Thesis](https://bitslyf.com/thesis/) Putting all data together to form valuable insights & helping builders to build an Industries on top of that i.e. [Requests for Startups (RFS)](https://bitslyf.com/rfs/). Every Bit is interconnected to each other. It does have [Scorecard](https://bitslyf.com/scorecard/) a score based on prediction. The motto is  Discover. Predict. Build. Go Ahead with Bitslyf deep dive into it. 
+
+To Contribute or to be a part of Bitslyf here you go [email](mailto:isidd.dev@gmail.com). We work to Build it. Thankyou.
