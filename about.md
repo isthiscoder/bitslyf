@@ -5,6 +5,10 @@ permalink: /about/
 summary: "Bitslyf is a research lab on industries: how they work, where they're stuck, and what to build next."
 ---
 
-The name itself speaks what it does Bits (The small fundamental concepts on How Industries actually works) & Lyf (The evolution of industries & creation of new possibilities) so from Analysing the workflow of industries to the Evolution or Creation of Industries it's where the Bitslyf bridges between. It does [Analysis](https://bitslyf.com/analysis/) to [Research](https://bitslyf.com/research/) [Prediction](https://bitslyf.com/prediction/) to [Thesis](https://bitslyf.com/thesis/) Putting all data together to form valuable insights & helping builders to build an Industries on top of that i.e. [Requests for Startups (RFS)](https://bitslyf.com/rfs/). Every Bit is interconnected to each other. It does have [Scorecard](https://bitslyf.com/scorecard/) a score based on prediction. The motto is  Discover. Predict. Build. Go Ahead with Bitslyf deep dive into it. 
+The name says what it does. **Bits** are the small, fundamental pieces of how industries actually work. **Lyf** is how industries evolve, and the new possibilities they create. Bitslyf is the bridge between the two: from analysing how an industry runs today to imagining what it becomes next.
 
-To Contribute or to be a part of Bitslyf here you go [email](mailto:isidd.dev@gmail.com). We work to Build it. Thankyou.
+Every piece connects. We start with [Analysis](/analysis/), move to [Research](/research/), make [Predictions](/prediction/) and form a [Thesis](/thesis/), then put it all together into [Requests for Startups](/rfs/): ideas builders can turn into companies. Every prediction is scored in public on the [Scorecard](/scorecard/).
+
+**Discover. Predict. Build.**
+
+Want to contribute or be part of Bitslyf? [Write to us](mailto:isidd.dev@gmail.com). We're building it together.
