@@ -16,7 +16,7 @@
         <a class="pill" href="{{ logurl | relative_url }}">{% include layer-name.html layer=newest.layer %}</a>
         <span>{{ newest.date | date: "%-d %b %Y" }}</span>
       </div>
-      <h3><a href="{{ newest.url | relative_url }}">{{ newest.title | default: newest.claim }}</a></h3>
+      <h3><a href="{{ newest.url | relative_url }}">{{ newest.claim | default: newest.title }}</a></h3>
       {% if newest.summary %}<p>{{ newest.summary }}</p>{% endif %}
       <a class="more" href="{{ newest.url | relative_url }}">Read more →</a>
     </article>

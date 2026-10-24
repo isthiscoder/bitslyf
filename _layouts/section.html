@@ -28,7 +28,7 @@ layout: default
       {%- for post in items limit: per offset: offset %}
         <a class="entry" href="{{ post.url | relative_url }}">
           <span class="entry-date">{{ post.date | date: "%-d %b %Y" }}</span>
-          <h2>{{ post.title | default: post.claim }}</h2>
+          <h2>{{ post.claim | default: post.title }}</h2>
           {% if post.summary %}<p>{{ post.summary }}</p>{% endif %}
           {% if page.layer == 'prediction' %}<span class="call-line">{{ post.confidence }}% · resolves {{ post.resolves | date: "%-d %b %Y" }} · <span class="status">{{ post.result | capitalize }}</span></span>{% endif %}
         </a>

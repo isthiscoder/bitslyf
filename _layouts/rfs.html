@@ -26,7 +26,7 @@ layout: default
       <section><h2>The research behind it</h2><div class="brief-text"><ul class="evidence">
         {% for slug in page.evidence %}{% assign ev = site.documents | where: "slug", slug | first %}{% if ev %}
         {%- capture evname %}{% include layer-name.html layer=ev.layer %}{% endcapture -%}
-        <li><span class="pill">{{ evname }}</span> <a href="{{ ev.url | relative_url }}">{{ ev.title | default: ev.claim }}</a></li>
+        <li><span class="pill">{{ evname }}</span> <a href="{{ ev.url | relative_url }}">{{ ev.claim | default: ev.title }}</a></li>
         {% endif %}{% endfor %}
       </ul></div></section>
       {% endif %}

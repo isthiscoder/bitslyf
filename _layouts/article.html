@@ -21,7 +21,7 @@ layout: default
     {% if parent or children.size > 0 %}
     <p class="lineage">
       {% if parent %}Builds on <a href="{{ parent.url | relative_url }}">{{ parent.title }}</a>.{% endif %}
-      {% for ch in children %} Led to <a href="{{ ch.url | relative_url }}">{{ ch.title | default: ch.claim }}</a>.{% endfor %}
+      {% for ch in children %} Led to <a href="{{ ch.url | relative_url }}">{{ ch.claim | default: ch.title }}</a>.{% endfor %}
     </p>
     {% endif %}
 

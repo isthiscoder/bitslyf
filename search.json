@@ -8,7 +8,7 @@ permalink: /search.json
 {%- for d in docs -%}
   {%- capture type %}{% include layer-name.html layer=d.layer %}{% endcapture -%}
   {
-    "title": {{ d.title | default: d.claim | jsonify }},
+    "title": {{ d.claim | default: d.title | jsonify }},
     "type": {{ type | strip | jsonify }},
     "date": {{ d.date | date: "%Y-%m-%d" | jsonify }},
     "tags": {% if d.tags %}{{ d.tags | jsonify }}{% else %}[]{% endif %},
