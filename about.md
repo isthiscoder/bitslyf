@@ -2,7 +2,7 @@
 layout: page
 title: About
 permalink: /about/
-summary: "Bitslyf is a research lab on industries: how they work, where they're stuck, and what to build next."
+summary: "A research lab on industries, from how they work to what to build next. Discover. Predict. Build."
 ---
 
 The name says what it does. **Bits** are the small, fundamental pieces of how industries actually work. **Lyf** is how industries evolve, and the new possibilities they create. Bitslyf is the bridge between the two: from analysing how an industry runs today to imagining what it becomes next.
