@@ -1,41 +1,9 @@
 ---
-layout: default
+layout: section
+title: Prediction
+collection: predictions
+layer: prediction
+intro: "Dated calls with a probability, scored in public."
+per_page: 12
+permalink: /prediction/
 ---
-{%- comment -%} One prediction: bitslyf.com/prediction/<slug>/ {%- endcomment -%}
-<div class="page-wrap">
-  <article class="page-inner article">
-    <p class="crumbs"><a href="{{ '/prediction/' | relative_url }}">Prediction</a> / {{ page.claim }}</p>
-    <div class="article-meta">
-      <a class="pill" href="{{ '/prediction/' | relative_url }}">Prediction</a>
-      <span>Made {{ page.date | date: "%-d %b %Y" }}</span>
-    </div>
-    <h1>{{ page.claim }}</h1>
-    {% if page.summary %}<p class="standfirst">{{ page.summary }}</p>{% endif %}
-
-    <dl class="record">
-      <div><dt>Confidence</dt><dd><span class="big-pct">{{ page.confidence }}%</span></dd></div>
-      <div><dt>Status</dt><dd><strong>{{ page.result | capitalize }}</strong></dd></div>
-      <div><dt>Made</dt><dd>{{ page.date | date: "%-d %b %Y" }}</dd></div>
-      <div><dt>Resolves</dt><dd>{{ page.resolves | date: "%-d %b %Y" }}</dd></div>
-      {% if page.falsified_by %}<div><dt>Proved wrong if</dt><dd>{{ page.falsified_by }}</dd></div>{% endif %}
-      {% if page.source %}<div><dt>Settled by</dt><dd>{{ page.source }}</dd></div>{% endif %}
-    </dl>
-
-    {% if page.essay %}
-      {% assign parent = site.documents | where: "slug", page.essay | first %}
-      {% if parent %}<p class="lineage">Argued in <a href="{{ parent.url | relative_url }}">{{ parent.title }}</a>.</p>{% endif %}
-    {% endif %}
-
-    {% assign body = content | strip %}
-    {% if body != "" %}<div class="prose">{{ content }}</div>{% endif %}
-
-    {% if page.resolution %}
-    <div class="attached">
-      <h2>Resolved {{ page.resolved_on | date: "%-d %b %Y" }}</h2>
-      <p>{{ page.resolution }}</p>
-    </div>
-    {% endif %}
-
-    <p class="back"><a href="{{ '/prediction/' | relative_url }}">← All Prediction</a> · <a href="{{ '/scorecard/' | relative_url }}">Scorecard</a></p>
-  </article>
-</div>
