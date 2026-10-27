@@ -14,7 +14,7 @@
     <article class="work">
       <div class="work-meta">
         <a class="pill" href="{{ logurl | relative_url }}">{% include layer-name.html layer=newest.layer %}</a>
-        <span>{{ newest.date | date: "%-d %b %Y" }}</span>
+        <span>{{ newest.date | date: "%-d %b %Y" }} · {% include read-time.html doc=newest %}</span>
       </div>
       <h3><a href="{{ newest.url | relative_url }}">{{ newest.claim | default: newest.title }}</a></h3>
       {% if newest.summary %}<p>{{ newest.summary }}</p>{% endif %}

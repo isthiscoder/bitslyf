@@ -1,0 +1,11 @@
+{%- comment -%}
+  Read time for any entry, at 200 words a minute (never less than 1 min).
+  Counts the body plus the summary and, for requests, the brief fields.
+  Use: {% include read-time.html doc=page %}
+{%- endcomment -%}
+{%- assign rt_d = include.doc -%}
+{%- capture rt_text -%}{{ rt_d.content }} {{ rt_d.summary }} {{ rt_d.claim }} {{ rt_d.problem }} {{ rt_d.why_now }} {{ rt_d.first_version }} {{ rt_d.who }} {{ rt_d.falsified_by }} {{ rt_d.resolution }} {{ rt_d.questions | join: " " }}{%- endcapture -%}
+{%- assign rt_words = rt_text | strip_html | number_of_words -%}
+{%- assign rt_min = rt_words | plus: 199 | divided_by: 200 -%}
+{%- if rt_min < 1 %}{% assign rt_min = 1 %}{% endif -%}
+{{ rt_min }} min read

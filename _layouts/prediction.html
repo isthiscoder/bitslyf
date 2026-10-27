@@ -7,7 +7,7 @@ layout: default
     <p class="crumbs"><a href="{{ '/prediction/' | relative_url }}">Prediction</a> / {{ page.claim }}</p>
     <div class="article-meta">
       <a class="pill" href="{{ '/prediction/' | relative_url }}">Prediction</a>
-      <span>Made {{ page.date | date: "%-d %b %Y" }}</span>
+      <span>Made {{ page.date | date: "%-d %b %Y" }} · {% include read-time.html doc=page %}</span>
     </div>
     <h1>{{ page.claim }}</h1>
     {% if page.summary %}<p class="standfirst">{{ page.summary }}</p>{% endif %}

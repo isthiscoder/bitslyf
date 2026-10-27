@@ -39,7 +39,7 @@ layout: default
           <h2>{{ r.title }}</h2>
           {% if r.summary %}<p>{{ r.summary }}</p>{% endif %}
           <div class="rfs-card-foot">
-            <span class="rfs-date">{{ r.date | date: "%-d %b %Y" }}</span>
+            <span class="rfs-date">{{ r.date | date: "%-d %b %Y" }} · {% include read-time.html doc=r %}</span>
             <span class="go">Read the request →</span>
           </div>
         </a>
